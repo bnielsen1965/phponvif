@@ -1,1 +1,47 @@
-[]
+[
+    {
+        "name": "nocon/nocon-onvif",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/bnielsen1965/NoCon-ONVIF.git",
+            "reference": "65920e6d11567785d83396dd5dafe83b8390029c"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/bnielsen1965/NoCon-ONVIF/zipball/65920e6d11567785d83396dd5dafe83b8390029c",
+            "reference": "65920e6d11567785d83396dd5dafe83b8390029c",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.3"
+        },
+        "time": "2016-06-03 04:20:18",
+        "type": "library",
+        "installation-source": "source",
+        "autoload": {
+            "psr-4": {
+                "NoCon\\": "src/NoCon"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "GPL-3.0+"
+        ],
+        "authors": [
+            {
+                "name": "Bryan Nielsen",
+                "email": "bnielsen1965@gmail.com"
+            }
+        ],
+        "description": "ONVIF communication methods for IP cameras.",
+        "keywords": [
+            "camera",
+            "communication",
+            "message",
+            "nocon",
+            "onvif"
+        ]
+    }
+]

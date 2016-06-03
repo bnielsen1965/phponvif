@@ -6,6 +6,5 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
-    'NoCon\\ONVIF\\' => array($vendorDir . '/nocon/nocon-onvif/src/NoCon/ONVIF'),
-    'NoCon\\' => array($vendorDir . '/NoCon'),
+    'NoCon\\' => array($vendorDir . '/NoCon', $vendorDir . '/nocon/nocon-onvif/src/NoCon'),
 );

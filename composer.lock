@@ -4,13 +4,59 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "a738a4084fb73aa3f1d150e2a7f15ceb",
-    "content-hash": "cd7313b77b87b855b0dc3c2b87911484",
-    "packages": [],
+    "hash": "da1b5c9e0188c971089a6fe8e7add9a6",
+    "content-hash": "cde89f253e4a80a1c9a974390245d178",
+    "packages": [
+        {
+            "name": "nocon/nocon-onvif",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/bnielsen1965/NoCon-ONVIF.git",
+                "reference": "65920e6d11567785d83396dd5dafe83b8390029c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/bnielsen1965/NoCon-ONVIF/zipball/65920e6d11567785d83396dd5dafe83b8390029c",
+                "reference": "65920e6d11567785d83396dd5dafe83b8390029c",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "NoCon\\": "src/NoCon"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-3.0+"
+            ],
+            "authors": [
+                {
+                    "name": "Bryan Nielsen",
+                    "email": "bnielsen1965@gmail.com"
+                }
+            ],
+            "description": "ONVIF communication methods for IP cameras.",
+            "keywords": [
+                "camera",
+                "communication",
+                "message",
+                "nocon",
+                "onvif"
+            ],
+            "time": "2016-06-03 04:20:18"
+        }
+    ],
     "packages-dev": [],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "nocon/nocon-onvif": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {

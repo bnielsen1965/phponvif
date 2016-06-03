@@ -12,20 +12,19 @@
                         <td>Enabled</td>
                         <td>
                             <select ng-model="interface.IPv4.Enabled" ng-options="o for o in [false, true]"></select>
-                            <button name="setInterfaceIPv4Enabled" value="1" type="button" ng-click="setInterfaceIPv4Enabled($index)">Set</button>
                         </td>
                     </tr>
                     <tr>
                         <td>DHCP</td>
                         <td>
                             <select ng-model="interface.IPv4.Config.DHCP" ng-options="o for o in [false, true]"></select>
-                            <button name="setInterfaceIPv4DHCP" value="1" type="button" ng-click="setInterfaceIPv4DHCP(interface.token)">Set</button>
                         </td>
                     </tr>
                     <tr>
                         <td>FromDHCP</td>
                         <td>
-                            {{interface.IPv4.Config.FromDHCP.Address}} / {{interface.IPv4.Config.FromDHCP.PrefixLength}}
+                            <span ng-if="interface.IPv4.Config.FromDHCP">
+                                {{interface.IPv4.Config.FromDHCP.Address}} / {{interface.IPv4.Config.FromDHCP.PrefixLength}}</span>
                         </td>
                     </tr>
                     <tr>
@@ -35,6 +34,12 @@
                                 <input type="text" ng-model="manual.Address"> / <input class="prefixlength" type="text" ng-model="manual.PrefixLength">
                                 <br>
                             </span>
+                            <button type="button" ng-click="newIPv4Manual($index)">[+]</button> 
+                        </td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>
                             <button type="button" ng-click="setNetworkInterfaces($index)">Set</button>
                         </td>
                     </tr>
@@ -50,4 +55,5 @@
              </td>
         </tr>
     </table>
+    {{networkInterfaces}}
 </div>

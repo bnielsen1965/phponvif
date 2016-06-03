@@ -86,8 +86,8 @@ switch ($method) {
         $timestamp = getSystemDateAndTime($wsdl, $location);
         
         $device->setSystemDateAndTime(array(
-            'DateTimeType' => $timestamp['timestamp']['DateTimeType'],
-            'DaylightSavings' => $timestamp['timestamp']['DaylightSavings'],
+            'DateTimeType' => $timestamp['SystemDateAndTime']['DateTimeType'],
+            'DaylightSavings' => $timestamp['SystemDateAndTime']['DaylightSavings'],
             'TimeZone' => array('TZ' => $timeZone)
         ));
         
@@ -127,7 +127,7 @@ switch ($method) {
         
         $device->setSystemDateAndTime(array(
             'DateTimeType' => $post['Data']['DateTimeType'],
-            'DaylightSavings' => $response->SystemDateAndTime->DaylightSavings,
+            'DaylightSavings' => $response['SystemDateAndTime']['DaylightSavings'],
         ));
         
         // returning current settings after change
@@ -148,8 +148,6 @@ switch ($method) {
         $location = $post['XAddrs'];
         $device = new \NoCon\ONVIF\Device(new \NoCon\ONVIF\Client($wsdl, array('trace' => true, 'location' => $location)));
         $device->setNTP(array('FromDHCP' => $post['Data'], 'NTPFromDHCP' => array(array('IPv4Address' => '132.163.4.102'))));
-        error_log($device->getSoapClient()->__getLastRequest());
-        error_log($device->getSoapClient()->__getLastResponse());
         $json = array_merge($json, getNTPInformation($wsdl, $location));
         break;
     
@@ -159,8 +157,6 @@ switch ($method) {
         $location = $post['XAddrs'];
         $device = new \NoCon\ONVIF\Device(new \NoCon\ONVIF\Client($wsdl, array('trace' => true, 'location' => $location)));
         $device->setNTP($post['Data']);
-        error_log($device->getSoapClient()->__getLastRequest());
-        error_log($device->getSoapClient()->__getLastResponse());
         $json = array_merge($json, getNTPInformation($wsdl, $location));
         break;
     
@@ -177,9 +173,6 @@ switch ($method) {
         $location = $post['XAddrs'];
         $device = new \NoCon\ONVIF\Device(new \NoCon\ONVIF\Client($wsdl, array('trace' => true, 'location' => $location)));
         $device->setNetworkInterfaces($post['Data']);
-        error_log(print_r($post['Data'], true));
-    error_log($device->getSoapClient()->__getLastRequest());
-        error_log($device->getSoapClient()->__getLastResponse());
         $json = array_merge($json, getNetworkInterfaces($wsdl, $location));
         break;
     

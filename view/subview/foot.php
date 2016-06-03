@@ -185,6 +185,7 @@ cameraApp.controller('CameraController', function ($scope, $http, $filter) {
     
     
     $scope.setNTPFromDHCP = function() {
+        
         $scope.deviceRequestP('setNTPFromDHCP', $scope.device.XAddrs, {'DateTimeType': $scope.ntpInformation.FromDHCP}, function(data) {
             if ( data.NTPInformation ) {
                 $scope.ntpInformationToScope(data.NTPInformation);
@@ -194,6 +195,24 @@ cameraApp.controller('CameraController', function ($scope, $http, $filter) {
     
     
     $scope.setNTPInformation = function() {
+        if ( $scope.ntpInformation.NTPManual.length ) {
+            // clear unused types
+            $scope.ntpInformation.NTPManual.forEach(function(element, index, array) {
+                if ( array[index].Type === 'DNS' ) {
+                    delete array[index].IPv4Address;
+                    delete array[index].IPv6Address;
+                }
+                else if ( array[index].Type === 'IPv4' ) {
+                    delete array[index].DNSName;
+                    delete array[index].IPv6Address;
+                }
+                else if ( array[index].Type === 'IPv6' ) {
+                    delete array[index].DNSName;
+                    delete array[index].IPv4Address;
+                }
+            });
+        }
+        
         $scope.deviceRequestP('setNTPInformation', $scope.device.XAddrs, $scope.ntpInformation, function(data) {
             if ( data.NTPInformation ) {
                 $scope.ntpInformationToScope(data.NTPInformation);
@@ -204,7 +223,17 @@ cameraApp.controller('CameraController', function ($scope, $http, $filter) {
     
     $scope.newNTPManual = function() {
         $scope.ntpInformation.NTPManual.push({'Type': 'IPv4', 'IPv4Address': ''});
-    }
+    };
+    
+    
+    $scope.newIPv4Manual = function(index) {
+        if ( $scope.networkInterfaces[index].IPv4.Config.Manual ) {
+            $scope.networkInterfaces[index].IPv4.Config.Manual.push({'Address': '', 'PrefixLength': ''});
+        }
+        else {
+            $scope.networkInterfaces[index].IPv4.Config.Manual = [{'Address': '', 'PrefixLength': ''}];
+        }
+    };
     
     
     $scope.setNetworkInterfaces = function(index) {
@@ -218,7 +247,7 @@ cameraApp.controller('CameraController', function ($scope, $http, $filter) {
             }
         };
         
-        if ( $scope.networkInterfaces[index].IPv4.Config.Manual.Address.length ) {
+        if ( $scope.networkInterfaces[index].IPv4.Config.Manual.length ) {
             interfaceSettings.NetworkInterface.IPv4.Manual = $scope.networkInterfaces[index].IPv4.Config.Manual;
         }
         
