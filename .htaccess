@@ -1,0 +1,10 @@
+RewriteEngine On
+
+# make sure it ends in a slash
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_URI} !.*/$
+RewriteRule .* $0/ [L]
+
+# rewrite to the router
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule .* index.php?parameters=$0 [QSA,L]

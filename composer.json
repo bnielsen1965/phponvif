@@ -1,0 +1,22 @@
+{
+    "name": "nocon/phponvif",
+    "type": "project",
+    "description": "A web application used to discover and manage ONVIF capable ip cameras on the network where the web application is hosted.",
+    "keywords":["onvif", "php"],
+    "license": "GPL-3.0+",
+    "authors": [
+        {
+            "name": "Bryan Nielsen",
+            "email": "bnielsen1965@gmail.com"
+        }
+    ],
+    "require": {
+      "php": ">=5.3",
+      "nocon/nocon-onvif": "dev-master"
+    },
+    "autoload": {
+        "psr-4": {
+            "NoCon\\": "vendor/NoCon"
+        }
+    }
+}

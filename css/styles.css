@@ -1,0 +1,143 @@
+h1.title {
+    margin-bottom: 0;
+}
+
+.smallinfo {
+    font-size: 75%;
+}
+
+.devicetitle {
+    float: left;
+    width: 100%;
+    font-weight: bold;
+    padding: 4px;
+}
+
+input.prefixlength {
+    width: 2em;
+}
+
+
+div.infobox {
+    overflow: auto;
+    width: 100%;
+    min-height: 35px;
+    position: relative;
+}
+
+img.busygif {
+    position: absolute;
+    left: 0;
+    visibility: hidden;
+}
+
+img.showbusy {
+    visibility: visible;
+}
+
+span.infotext {
+    margin-left: 40px;
+}
+
+
+ul.tabs {
+    display: inline-block;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    float: left;
+    clear: left;
+}
+
+ul.tabs li {
+    float: left;
+    border: 1px solid black;
+    border-bottom: none;
+    margin-left: 5px;
+    padding: 2px;
+    cursor: pointer;
+}
+
+ul.tabs li.currenttab {
+    font-weight: bold;
+}
+
+
+div.tabcontainer {
+    float: left;
+    clear: left;
+    border: 1px solid black;
+    position: relative;
+    min-width: 640px;
+}
+
+div.tab {
+    float: left;
+    clear: left;
+    display: none;
+    width: 100%;
+}
+
+div.tab.currenttab {
+    display: block;
+}
+
+
+div.listbox-container {
+    overflow: auto;
+    width: 100%;
+}
+
+div.listbox {
+    float: left;
+    overflow: visible;
+    position: relative;
+}
+
+
+
+ul.devicelist {
+    list-style: none;
+}
+
+ul.devicelist li.title {
+    font-weight: bold;
+}
+
+a.device {
+    cursor: pointer;
+}
+
+
+
+ul.detailslist {
+    list-style: none;
+}
+
+ul.detailslist li.title {
+    font-weight: bold;
+}
+
+
+table.details {
+    padding: 0;
+    margin: 0;
+    border: none;
+    width: 100%;
+}
+
+table.details tr:nth-child(even) {
+    background-color: #eee;
+}
+
+table.details tr:nth-child(odd) {
+    background-color: #fff;
+}
+
+table.details th {
+    color: blue;
+}
+
+table.details td {
+    vertical-align: top;
+}
