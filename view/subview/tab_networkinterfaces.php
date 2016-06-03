@@ -23,8 +23,7 @@
                     <tr>
                         <td>FromDHCP</td>
                         <td>
-                            <span ng-if="interface.IPv4.Config.FromDHCP">
-                                {{interface.IPv4.Config.FromDHCP.Address}} / {{interface.IPv4.Config.FromDHCP.PrefixLength}}</span>
+                            <span ng-if="interface.IPv4.Config.FromDHCP">{{interface.IPv4.Config.FromDHCP.Address}} / {{interface.IPv4.Config.FromDHCP.PrefixLength}}</span>
                         </td>
                     </tr>
                     <tr>
@@ -55,5 +54,4 @@
              </td>
         </tr>
     </table>
-    {{networkInterfaces}}
 </div>
