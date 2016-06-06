@@ -319,6 +319,30 @@ cameraApp.controller('CameraController', function ($scope, $http, $filter) {
     };
     
     
+    $scope.createUsers = function() {
+        var msgData = {
+            'authUsername': $scope.deviceUsername,
+            'authPassword': $scope.devicePassword,
+            'username': $scope.deviceUsername,
+            'password': $scope.devicePassword
+        };
+        $scope.deviceRequestP('createUsers', $scope.device.XAddrs, msgData, function(data) {
+            if ( data ) {
+                $scope.other = data;
+            }
+        });
+    };
+    
+    
+    $scope.deleteUsers = function() {
+        $scope.deviceRequestP('deleteUsers', $scope.device.XAddrs, {'username': $scope.deviceUsername}, function(data) {
+            if ( data ) {
+                $scope.other = data;
+            }
+        });
+    };
+    
+    
     
     
     

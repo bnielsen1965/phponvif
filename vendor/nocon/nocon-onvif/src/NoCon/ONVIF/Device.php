@@ -325,6 +325,28 @@ class Device {
     }
     
     
+    public function createUsers($username, $password, $userLevel) {
+        $args = array(
+            'User' => array(
+                'Username' => $username,
+                'Password' => $password,
+                'UserLevel' => $userLevel
+            )
+        );
+        $response = $this->soapClient->__soapCall('CreateUsers', array($args));
+        return $response;
+    }
+    
+    
+    public function deleteUsers($username) {
+        $args = array(
+            'Username' => $username
+        );
+        $response = $this->soapClient->__soapCall('DeleteUsers', array($args));
+        return $response;
+    }
+    
+    
     
     
     

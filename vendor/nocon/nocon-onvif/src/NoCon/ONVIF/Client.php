@@ -74,19 +74,15 @@ class Client extends \SoapClient {
      * @return type
      */
     public function __soapCall($functionName, $arguments, $options = null, $inputHeaders = null, &$outputHeaders = null) {
-        /*
         switch ( $functionName ) {
-            case 'GetSystemSupportInformation':
-                echo "auth\n";
+            case 'CreateUsers':
+            case 'DeleteUsers':
                 $response = parent::__soapCall($functionName, $arguments, $options, $this->generateWSSecurityHeader($this->nonce, $this->timestamp, $this->password, $this->username));
                 break;
             
             default:
                 $response = parent::__soapCall($functionName, $arguments, $options, $inputHeaders, $outputHeaders);
         }
-        */
-        
-        $response = parent::__soapCall($functionName, $arguments, $options, $inputHeaders, $outputHeaders);
         return $response;
     }
     
@@ -118,7 +114,6 @@ class Client extends \SoapClient {
     private function generateWSSecurityHeader($nonce, $timestamp, $password, $username) {
         $wssNamespace = "http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd";
         $wsuNamespace = "http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd";
-        
         $security = new \SoapVar(
             array(new \SoapVar(
                 array(
