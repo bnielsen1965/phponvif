@@ -177,6 +177,40 @@ switch ($method) {
         break;
     
     
+    case 'getHostname':
+        $wsdl = $includePath . 'onvif/ver10/device/wsdl/devicemgmt.wsdl';
+        $location = $post['XAddrs'];
+        $device = new \NoCon\ONVIF\Device(new \NoCon\ONVIF\Client($wsdl, array('trace' => true, 'location' => $location)));
+        $json['HostnameInformation'] = $device->getHostname()->HostnameInformation;
+        break;
+    
+    
+    
+    
+    case 'getNetworkProtocols':
+        $wsdl = $includePath . 'onvif/ver10/device/wsdl/devicemgmt.wsdl';
+        $location = $post['XAddrs'];
+        $device = new \NoCon\ONVIF\Device(new \NoCon\ONVIF\Client($wsdl, array('trace' => true, 'location' => $location)));
+        $json['NetworkProtocols'] = $device->getNetworkProtocols()->NetworkProtocols;
+        break;
+    
+    
+    case 'getSystemUris':
+        $wsdl = $includePath . 'onvif/ver10/device/wsdl/devicemgmt.wsdl';
+        $location = $post['XAddrs'];
+        $device = new \NoCon\ONVIF\Device(new \NoCon\ONVIF\Client($wsdl, array('trace' => true, 'location' => $location)));
+        $json['data'] = $device->getSystemUris();
+        break;
+    
+    
+    case 'getSystemSupportInformation':
+        $wsdl = $includePath . 'onvif/ver10/device/wsdl/devicemgmt.wsdl';
+        $location = $post['XAddrs'];
+        $device = new \NoCon\ONVIF\Device(new \NoCon\ONVIF\Client($wsdl, array('trace' => true, 'location' => $location)));
+        $json['data'] = $device->getSystemSupportInformation();
+        break;
+    
+    
     case 'setSystemFactoryDefault':
         $wsdl = $includePath . 'onvif/ver10/device/wsdl/devicemgmt.wsdl';
         $location = $post['XAddrs'];
@@ -193,19 +227,40 @@ switch ($method) {
         break;
     
     
-    case 'test':
+    case 'getWsdlUrl':
         $wsdl = $includePath . 'onvif/ver10/device/wsdl/devicemgmt.wsdl';
         $location = $post['XAddrs'];
         $device = new \NoCon\ONVIF\Device(new \NoCon\ONVIF\Client($wsdl, array('trace' => true, 'location' => $location)));
-        $info = $device->getNetworkProtocols();
-//$device->setSystemFactoryDefault(array('FactoryDefault' => 'Hard'));
-
-        error_log(var_export($info, true));
+        $json['WsdlUrl'] = $device->getWsdlUrl()->WsdlUrl;
+        break;
+    
+    
+    case 'getServices':
+        $wsdl = $includePath . 'onvif/ver10/device/wsdl/devicemgmt.wsdl';
+        $location = $post['XAddrs'];
+        $device = new \NoCon\ONVIF\Device(new \NoCon\ONVIF\Client($wsdl, array('trace' => true, 'location' => $location)));
+        $json['Service'] = $device->getServices()->Service;
+        break;
+    
+    
+    case 'getCapabilities':
+        $wsdl = $includePath . 'onvif/ver10/device/wsdl/devicemgmt.wsdl';
+        $location = $post['XAddrs'];
+        $device = new \NoCon\ONVIF\Device(new \NoCon\ONVIF\Client($wsdl, array('trace' => true, 'location' => $location)));
+        $json['Capabilities'] = $device->getCapabilities()->Capabilities;
+        break;
+    
+    
+    case 'getUsers':
+        $wsdl = $includePath . 'onvif/ver10/device/wsdl/devicemgmt.wsdl';
+        $location = $post['XAddrs'];
+        $device = new \NoCon\ONVIF\Device(new \NoCon\ONVIF\Client($wsdl, array('trace' => true, 'location' => $location)));
+        $json['data'] = $device->getUsers();
         error_log($device->getSoapClient()->__getLastRequest());
         error_log($device->getSoapClient()->__getLastResponse());
-        
-        $json['info'] = (array)$info;
         break;
+    
+    
     
     
     default:

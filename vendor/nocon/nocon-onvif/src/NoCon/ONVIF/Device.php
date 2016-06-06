@@ -26,7 +26,7 @@ namespace NoCon\ONVIF;
  * NoCon\ONVIF\Device class provides ONVIF device functions.
  * 
  * @author Bryan Nielsen <bnielsen1965@gmail.com>
- * @copyright (c) 2015, Bryan Nielsen
+ * @copyright (c) 2016, Bryan Nielsen
  */
 class Device {
     
@@ -297,7 +297,6 @@ class Device {
     public function getSystemLog($logType) {
         $args = array('LogType' => $logType);
         $response = $this->soapClient->__soapCall('GetSystemLog', array($args));
-        var_export($response);
         return $response;
     }
     
@@ -310,14 +309,18 @@ class Device {
     
     public function getRelayOutputs() {
         $response = $this->soapClient->__soapCall('GetRelayOutputs', array());
-        var_export($response);
         return $response;
     }
     
     
     public function getAnalyticsEngines() {
         $response = $this->soapClient->__soapCall('GetAnalyticsEngines', array());
-        var_export($response);
+        return $response;
+    }
+    
+    
+    public function getUsers() {
+        $response = $this->soapClient->__soapCall('getUsers', array());
         return $response;
     }
     

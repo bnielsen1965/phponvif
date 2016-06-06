@@ -7,6 +7,11 @@
             <span class="infotext">{{infotext}}</span>
         </div>
         
+        <div class="authbox">
+            <label>Username: </label><input type="text" ng-model="deviceUsername"> 
+            <label>Password: </label><input type="text" ng-model="devicePassword">
+        </div>
+        
         <div class="listbox">
             <table class="details">
                 <tr><th>Device List</th></tr>
@@ -32,9 +37,8 @@
                 <?php Router::includeView('subview/tab_ntpinformation');?>
                 <?php Router::includeView('subview/tab_networkinterfaces');?>
                 <?php Router::includeView('subview/tab_reset');?>
+                <?php Router::includeView('subview/tab_other');?>
             </div>
         </div>
     </div>
-    
-    <button name="test" value="1" type="button" ng-click="test()">Test</button>
 </div>

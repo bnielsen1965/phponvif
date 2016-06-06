@@ -94,6 +94,11 @@ div.listbox {
     position: relative;
 }
 
+div.authbox {
+    float: left;
+    width: 100%;
+}
+
 
 
 ul.devicelist {
