@@ -319,8 +319,14 @@ class Device {
     }
     
     
+    public function getDPAddresses() {
+        $response = $this->soapClient->__soapCall('GetDPAddresses', array());
+        return $response;
+    }
+    
+    
     public function getUsers() {
-        $response = $this->soapClient->__soapCall('getUsers', array());
+        $response = $this->soapClient->__soapCall('GetUsers', array());
         return $response;
     }
     
@@ -344,6 +350,11 @@ class Device {
         );
         $response = $this->soapClient->__soapCall('DeleteUsers', array($args));
         return $response;
+    }
+    
+    
+    public function getAccessPolicy() {
+        return $this->soapClient->__soapCall('GetAccessPolicy', array());
     }
     
     

@@ -77,6 +77,7 @@ class Client extends \SoapClient {
         switch ( $functionName ) {
             case 'CreateUsers':
             case 'DeleteUsers':
+            case 'GetAccessPolicy':
                 $response = parent::__soapCall($functionName, $arguments, $options, $this->generateWSSecurityHeader($this->nonce, $this->timestamp, $this->password, $this->username));
                 break;
             

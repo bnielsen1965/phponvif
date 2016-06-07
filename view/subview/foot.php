@@ -310,6 +310,15 @@ cameraApp.controller('CameraController', function ($scope, $http, $filter) {
     };
     
     
+    $scope.getDPAddresses = function() {
+        $scope.deviceRequestP('getDPAddresses', $scope.device.XAddrs, null, function(data) {
+            if ( data ) {
+                $scope.other = data;
+            }
+        });
+    };
+    
+    
     $scope.getUsers = function() {
         $scope.deviceRequestP('getUsers', $scope.device.XAddrs, null, function(data) {
             if ( data ) {
@@ -336,6 +345,19 @@ cameraApp.controller('CameraController', function ($scope, $http, $filter) {
     
     $scope.deleteUsers = function() {
         $scope.deviceRequestP('deleteUsers', $scope.device.XAddrs, {'username': $scope.deviceUsername}, function(data) {
+            if ( data ) {
+                $scope.other = data;
+            }
+        });
+    };
+    
+    
+    $scope.getAccessPolicy = function() {
+        var msgData = {
+            'authUsername': $scope.deviceUsername,
+            'authPassword': $scope.devicePassword
+        };
+        $scope.deviceRequestP('getAccessPolicy', $scope.device.XAddrs, msgData, function(data) {
             if ( data ) {
                 $scope.other = data;
             }

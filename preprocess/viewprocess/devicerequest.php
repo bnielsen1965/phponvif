@@ -251,6 +251,14 @@ switch ($method) {
         break;
     
     
+    case 'getDPAddresses':
+        $wsdl = $includePath . 'onvif/ver10/device/wsdl/devicemgmt.wsdl';
+        $location = $post['XAddrs'];
+        $device = new \NoCon\ONVIF\Device(new \NoCon\ONVIF\Client($wsdl, array('trace' => true, 'location' => $location)));
+        $json['data'] = $device->getDPAddresses();
+        break;
+    
+    
     case 'getUsers':
         $wsdl = $includePath . 'onvif/ver10/device/wsdl/devicemgmt.wsdl';
         $location = $post['XAddrs'];
@@ -277,6 +285,17 @@ switch ($method) {
         $location = $post['XAddrs'];
         $device = new \NoCon\ONVIF\Device(new \NoCon\ONVIF\Client($wsdl, array('trace' => true, 'location' => $location)));
         $json['data'] = $device->deleteUsers($post['Data']['username']);
+        error_log($device->getSoapClient()->__getLastRequest());
+        error_log($device->getSoapClient()->__getLastResponse());
+        break;
+    
+    
+    case 'getAccessPolicy':
+        $wsdl = $includePath . 'onvif/ver10/device/wsdl/devicemgmt.wsdl';
+        $location = $post['XAddrs'];
+        $device = new \NoCon\ONVIF\Device(new \NoCon\ONVIF\Client($wsdl, array('trace' => true, 'location' => $location)));
+        $device->setAuth('123456', date('c'), $post['Data']['authPassword'], $post['Data']['authUsername']);
+        $json['data'] = $device->GetAccessPolicy();
         error_log($device->getSoapClient()->__getLastRequest());
         error_log($device->getSoapClient()->__getLastResponse());
         break;
