@@ -63,7 +63,7 @@ switch ($method) {
                     'Day' => date('d', $dateTime)
                 ),
                 'Time' => array(
-                    'Hour' => date('h', $dateTime),
+                    'Hour' => date('H', $dateTime),
                     'Minute' => date('i', $dateTime),
                     'Second' => date('s', $dateTime)
                 )
